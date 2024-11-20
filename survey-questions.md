@@ -21,7 +21,7 @@ To remain as generic as possible, we abstract the key sub-processess for the pro
 
 | Process | Explanation |
 | ---------- | ----------- |
-| **Data Ingestion** | Activities to bring acquired data into a machine-readable state where it is ready for further processing. |
+| **Data Ingestion** | Activities to bring data that is already acquired by the NSO into a machine-readable state where it is ready for further processing. |
 | **Data Processing** | Activities to clean, validate, correct, impute, or otherwise adjust the data so that it is in a state where it is ready to be used to produce elementary indexes. |
 | **Elementary Indexes** | Calculate indexes from the processed data for a given geography, time period, and product category (elementary aggregate). |
 | **Aggregation** | Aggregate the elementary price indexes into higher-level indexes (e.g., all-items CPI). |
