@@ -124,7 +124,7 @@ In this question, we are trying to understand how centralized/decentralized syst
 **Example**: If I had (1) one system that handled "Data Ingestion" and "Data Processing", (2) a second system that handled "Produce Elementary Aggregates" and "Aggregation", (3) a third system that handled "Produce Elementary Aggregates", "Aggregation", and "Dissemination", and (4) a fourth system that handled "Data Processing", "Produce Elementary Aggregates", and "Aggregation", I would answer this question as follows.
 
 | System Name | Data Ingestion | Data Processing | Produce Elementary Aggregates | Aggregation | Dissemination |
-|------------|------------|------------|----------------|------------|------------|
+|------------|------------|------------|------------|------------|------------|
 | System 1 | X | X |  |  |  |
 | System 2 |  |  | X | X |  |
 | System 3 |  |  | X | X | X |
@@ -133,7 +133,7 @@ In this question, we are trying to understand how centralized/decentralized syst
 | (Add more) |  |  |  |  |  |
 
 | System Name | Data Ingestion | Data Processing | Produce Elementary Aggregates | Aggregation | Dissemination |
-|------------|------------|------------|----------------|------------|------------|
+|------------|------------|------------|------------|------------|------------|
 | System 1 |  |  |  |  |  |
 | System 2 |  |  |  |  |  |
 | System 3 |  |  |  |  |  |
@@ -571,7 +571,7 @@ Please select all that apply
 -   [ ] 80% to 90%
 -   [ ] 90% to 100%
 
-| Simple Implementation | Dynamic Sample Method | Multilateral Method | Something Else |
+| [Static Sample Approach](https://unstats.un.org/wiki/display/GWGSD/Product+sampling+for+price+index+calculation) | [Dynamic Sample Method](https://unstats.un.org/wiki/display/GWGSD/Product+sampling+for+price+index+calculation) | [Multilateral Method](https://unstats.un.org/wiki/display/GWGSD/Multilateral+price+index+methods) | Another method (such as [quality adjustment methods](https://unstats.un.org/wiki/display/GWGSD/Quality+change+and+hedonic+estimation)) |
 |------------------|------------------|------------------|------------------|
 | Select band | Select band | Select band | Select band |
 
