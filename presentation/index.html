@@ -52,7 +52,7 @@
 				</ol>
 			</section>
 			<section>
-				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.125, 0.000, 0.175, 1.000)"
 					data-background="#fff">
 					<h3>What this survey is about</h3>
 					<p>The interaction between</p>
@@ -92,7 +92,7 @@
 						</ol>
 						<p>and how it affects CPI production systems.</p>
 				</section>
-				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.125, 0.000, 0.175, 1.000)"
 					data-background="#fff">
 					<h3>What this survey is about</h3>
 					<ul>
@@ -171,7 +171,7 @@
 				</section>
 				<section>
 					<h3>System</h3>
-					<p>
+					<p class="r-fit-text">
 						A <b>system</b> is any <b>indivisible</b><sup>1</sup> <b>software component</b> that takes
 						<b>data input(s)</b> and
 						produces <b>data output(s)</b>.
@@ -184,6 +184,115 @@
 							</small>
 						</p>
 					</div>
+				</section>
+				<section>
+					<table class="r-fit-text">
+						<h3>GSBPM Processing Steps</h3>
+						<tr><th>Process</th><th>Explanation</th><th></th></tr>
+						<tr class="fragment"><td><b>Ingestion</b></td><td>Getting <b>acquired data</b> into a <b>machine-readable state</b> where it is <b>ready</b> for further processing.</td><td></td></tr>
+						<tr class="fragment"><td><b>Processing</b></td><td><b>Preparing the data</b> to produce elementary indexes.</td><td></td></tr>
+						<tr class="fragment"><td><b>Elementary Indexes</b></td><td>Calculate <b>elementary indexes</b> using the processed data.</td><td></td></tr>
+						<tr class="fragment"><td><b>Aggregation</b></td><td>Aggregateelementary price indexes into <b>higher-level indexes</b>.</td><td></td></tr>
+						<tr class="fragment"><td><b>Finalization</b></td><td>Store price indexes for <b>subsequent use</b> and <b>dissemination</b>.</td><td></td></tr>
+						</table>
+				</section>
+				<section>
+					<h3>Flow of Work</h3>
+					<p class="r-fit-text">
+						The direction of GSBPM processing steps from <b>raw data</b> to <b>final outputs</b>.
+					</p>
+					<img width="100%" src="../diagrams/gsbpm-systems-2.drawio.svg" alt="Flow of work diagram">
+				</section>
+				<section>
+					<h3>Team</h3>
+					<p class="r-fit-text">
+						A <b>group of individuals</b> who maintains <b>one or more systems</b>.
+					</p>
+					<img width="100%" src="../diagrams/gsbpm-systems-2.drawio.svg" alt="Flow of work diagram">
+					<div class="fragment" style="text-align: left; font-size: smaller">
+						<p>
+							<small>
+								<b>Note</b>: One system can <b>cut across</b> GSBPM steps.
+							</small>
+						</p>
+					</div>
+					<div class="fragment" style="text-align: left; font-size: smaller">
+						<p>
+							<small>
+								<b>Note</b>: More than one system can exist <b>within</b> a single GSBPM step.
+							</small>
+						</p>
+					</div>
+				</section>
+				<section>
+					<h3>Domain-Aligned Team</h3>
+
+					<div style="background: #fff2cc; text-align: center; padding-left: 1%; border-radius: 10px;">
+						<p class="r-fit-text">
+							A <b>group of individuals</b> who are <b>functionally embedded</b> within the CPI team.
+							These teams tend to have significant <b>CPI domain knowledge</b>.
+						</p>
+					</div>
+					<p class="fragment">
+						<small>This is in contrast to a...</small>
+					</p>
+					<h3 class="fragment">Centralized Team</h3>
+
+					<div class="fragment" style="background: #dae8fc; text-align: center; padding-left: 1%; border-radius: 10px;">
+						<p class="r-fit-text">
+							A <b>group of individuals</b> who are <b>centralized elsewhere</b> in the organization.
+							These teams tend to <b>NOT</b> have significant <b>domain knowledge</b>.
+						</p>
+					</div>
+				</section>
+				<section>
+					<h3>Putting it all together</h3>
+					<img height="100%" src="../diagrams/gsbpm-systems-3.drawio.svg" alt="System diagram">
+				</section>
+				<section>
+					<h3>Ingestion</h3>
+					<div class="container" style="display: grid; grid-auto-flow: column; column-gap: 2%;">
+						<div class="col">
+							<img height="75%" src="../diagrams/presentation/ingestion.PNG" alt="System diagram">
+						</div>
+						<div class="col">
+							<ul>
+								<li>
+									A (domain-aligned) group of economists in the CPI team maintain a single system for one data source.
+								</li>
+								<li>
+									A (central) corporate IT team maintains a single system that manages the ingestion of the remaining data that calculates the CPI.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Processing and Elementary Indexes</h3>
+					<div class="container" style="display: grid; grid-auto-flow: column; column-gap: 2%;">
+						<div class="col">
+							<ul>
+								<li>
+									The top team maintains one system that handles <b>both</b> processing and elementary index calculation<sup>1</sup>.
+								</li>
+								<li>
+									Each of the remaining teams maintain <b>two systems</b> that <b>separately</b> handle processing and elementary index calculation.
+								</li>
+							</ul>
+							<div class="fragment" style="text-align: left; font-size: smaller">
+								<p>
+									<small>
+										<b>Note</b>: For the top system, it is <b>not straightforward</b> to make significant changes to the processing component without also affecting the elementary index component. 
+									</small>
+								</p>
+							</div>
+						</div>
+						<div class="col">
+							<img height="65%" src="../diagrams/presentation/processing-elementary.PNG" alt="System diagram">
+						</div>
+					</div>
+					
+				</section>
 		</div>
 		</section>
 
