@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>CPI Systems Survey</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/white.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<a href="https://unstats.un.org/bigdata/task-teams/scanner/index.cshtml" , target="_blank">
+					<img src="https://unstats.un.org/bigdata/assets/img/logo/logo_2021_long.png" alt="UNBigData logo"
+						style="margin: 0 auto 4rem auto; background: transparent;" class="un-big-data-logo">
+				</a>
+				<h3>CPI Systems Survey</h3>
+				<p>
+					<small>Created by Collin Brown and Steve Martin</small>
+					<small>
+						on behalf of the
+						<a href="https://unstats.un.org/bigdata/task-teams/scanner/index.cshtml" , target="_blank">
+							Task Team on Scanner Data
+						</a>
+					</small>
+				</p>
+				<div style="text-align: center; font-size: smaller">
+					<p>
+						<small>
+							Presentation created with <a href="https://revealjs.com/" target="_blank">RevealJS</a>
+						</small>
+					</p>
+				</div>
+			</section>
+			<section>
+				<h3>Presentation Overview</h3>
+				<ol>
+					<li>What this survey is about</li>
+					<li>Why we are running the survey</li>
+					<li>Explanation of key concepts</li>
+					<li>Survey walkthrough</li>
+					<li>What we hope to learn</li>
+				</ol>
+			</section>
+			<section>
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+					data-background="#fff">
+					<h3>What this survey is about</h3>
+					<p>The interaction between</p>
+					<ul>
+						<li>
+							<div data-id="box1"
+								style="background: #fff2cc; border: 1px solid black; width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								domain-aligned teams</div>
+						</li>
+						<li>
+							<div data-id="box2"
+								style="background: #dae8fc; border: 1px solid black; width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								centralized teams</div>
+						</li>
+						<li>
+							<div data-id="box3"
+								style="background: #d5e8d4; border: 1px solid black; width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								software systems</div>
+						</li>
+						<li>
+							<div data-id="box5"
+								style="background: #fff; border: 1px solid black;  width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								input data</div>
+						</li>
+						<li>
+							<div data-id="box4"
+								style="background: #fff; width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								<a href="https://unece.org/statistics/documents/2019/01/standards/gsbpm-v51" ,
+									target="_blank">GSBPM</a> processing steps, and
+							</div>
+						</li>
+						<li>
+							<div data-id="box6"
+								style="background: #fff; border: 1px solid black;  width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								output data</div>
+						</li>
+						</ol>
+						<p>and how it affects CPI production systems.</p>
+				</section>
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)"
+					data-background="#fff">
+					<h3>What this survey is about</h3>
+					<ul>
+						<li>Teams own systems.</li>
+						<li>Teams and systems <b>interact</b> with eachother.</li>
+						<li>Systems transform data across the GSBPM process.</li>
+					</ul>
+					<div class="container" style="display: grid; grid-auto-flow: column; column-gap: 2%;">
+						<div class="r-stack col">
+							<div data-id="box5"
+								style="background: #fff; border: 1px solid black; width: auto; height: auto; border-radius: 0%; text-align: center; padding: 4%;">
+								input</div>
+						</div>
+						<div class="r-stack col">
+							<div data-id="box1"
+								style="background: #fff2cc; border: 1px solid black; width: auto; height: 300px; border-radius: 5%; text-align: center; padding: 4%;">
+								domain-aligned team</div>
+							<div data-id="box3"
+								style="background: #d5e8d4; border: 1px solid black; width: auto; height: auto; border-radius: 50%; text-align: center; vertical-align: middle; padding: 3%;">
+								system</div>
+						</div>
+						<div class="r-stack col">
+							<div data-id="box2"
+								style="background: #dae8fc; border: 1px solid black; width: auto; height: 300px; border-radius: 5%; text-align: center; padding: 4%;">
+								centralized team</div>
+							<div data-id="box3"
+								style="background: #d5e8d4; border: 1px solid black; width: auto; height: auto; border-radius: 50%; text-align: center; vertical-align: middle; padding: 3%;">
+								system</div>
+						</div>
+						<div class="r-stack col">
+							<div data-id="box6"
+								style="background: #fff; border: 1px solid black; width: auto; height: auto; border-radius: 0%; text-align: center; padding: 4%;">
+								output</div>
+						</div>
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h3>What this survey is about</h3>
+					<p>For CPI Production systems around the world, we aim to</p>
+					<ul>
+						<li><b>characterize</b> team interactions and system organizations,</li>
+						<li><b>identify</b> the tools and practices currently in use, and </li>
+						<li><b>infer</b> how these factors relate to key business outcomes.</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Why we are running the survey</h3>
+					<ul>
+						<li>Alternative Data Source (ADS) usage in CPI systems demands significant technical expertise
+							<b>across multiple skill domains</b>.
+						</li>
+						<li>Developing and maintaining CPI systems that use ADS can <b>cut across organizational
+								silos</b>.</li>
+						<li>Lifetime of CPI systems and practices can <b>span decades</b>.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Why we are running the survey</h3>
+					<p>As far as we know, we are the first to:</p>
+					<ul>
+						<li>characterize the state of team and system organization,</li>
+						<li>identify the tools and practices being used, or</li>
+						<li>understand how these characteristics relate to business outcomes (including ADS adoption).
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Explanation of Key Concepts</h3>
+					<p>
+						In this section, we cover the key terms and concepts used throughout the survey.
+					</p>
+				</section>
+				<section>
+					<h3>System</h3>
+					<p>
+						A <b>system</b> is any <b>indivisible</b><sup>1</sup> <b>software component</b> that takes
+						<b>data input(s)</b> and
+						produces <b>data output(s)</b>.
+					</p>
+					<img width="60%" src="../diagrams/gsbpm-systems.drawio.svg" alt="System diagram">
+					<div style="text-align: left; font-size: smaller">
+						<p>
+							<small>
+								1: I.e., the component runs <b>entirely</b> or <b>not at all</b>.
+							</small>
+						</p>
+					</div>
+		</div>
+		</section>
+
+		</section>
+	</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
