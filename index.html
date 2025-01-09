@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>CPI Systems Survey</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/white.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<a href="https://unstats.un.org/bigdata/task-teams/scanner/index.cshtml" , target="_blank">
+					<img src="https://unstats.un.org/bigdata/assets/img/logo/logo_2021_long.png" alt="UNBigData logo"
+						style="margin: 0 auto 4rem auto; background: transparent;" class="un-big-data-logo">
+				</a>
+				<h3>CPI Systems Survey</h3>
+				<p>
+					<small>Created by Collin Brown and Steve Martin</small>
+					<small>
+						on behalf of the
+						<a href="https://unstats.un.org/bigdata/task-teams/scanner/index.cshtml" , target="_blank">
+							Task Team on Scanner Data
+						</a>
+					</small>
+				</p>
+				<div style="text-align: center; font-size: smaller">
+					<p>
+						<small>
+							Presentation created with <a href="https://revealjs.com/" target="_blank">RevealJS</a>
+						</small>
+					</p>
+				</div>
+			</section>
+			<section>
+				<h3>Presentation Overview</h3>
+				<ol>
+					<li>What this survey is about</li>
+					<li>Why we are running the survey</li>
+					<li>Explanation of key concepts</li>
+					<li>Survey walkthrough</li>
+					<li>What we hope to learn</li>
+				</ol>
+			</section>
+			<section>
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.125, 0.000, 0.175, 1.000)"
+					data-background="#fff">
+					<h3>What this survey is about</h3>
+					<p>The interaction between</p>
+					<ul>
+						<li>
+							<div data-id="box1"
+								style="background: #fff2cc; border: 1px solid black; width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								domain-aligned teams</div>
+						</li>
+						<li>
+							<div data-id="box2"
+								style="background: #dae8fc; border: 1px solid black; width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								centralized teams</div>
+						</li>
+						<li>
+							<div data-id="box3"
+								style="background: #d5e8d4; border: 1px solid black; width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								software systems</div>
+						</li>
+						<li>
+							<div data-id="box5"
+								style="background: #fff; border: 1px solid black;  width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								input data</div>
+						</li>
+						<li>
+							<div data-id="box4"
+								style="background: #fff; width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								<a href="https://unece.org/statistics/documents/2019/01/standards/gsbpm-v51" ,
+									target="_blank">GSBPM</a> processing steps, and
+							</div>
+						</li>
+						<li>
+							<div data-id="box6"
+								style="background: #fff; border: 1px solid black;  width: auto; height: 50px; margin: 10px; border-radius: 5px; text-align: center;">
+								output data</div>
+						</li>
+						</ol>
+						<p>and how it affects CPI production systems.</p>
+				</section>
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.125, 0.000, 0.175, 1.000)"
+					data-background="#fff">
+					<h3>What this survey is about</h3>
+					<ul>
+						<li>Teams own systems.</li>
+						<li>Teams and systems <b>interact</b> with eachother.</li>
+						<li>Systems transform data across the GSBPM process.</li>
+					</ul>
+					<div class="container" style="display: grid; grid-auto-flow: column; column-gap: 2%;">
+						<div class="r-stack col">
+							<div data-id="box5"
+								style="background: #fff; border: 1px solid black; width: auto; height: auto; border-radius: 0%; text-align: center; padding: 4%;">
+								input</div>
+						</div>
+						<div class="r-stack col">
+							<div data-id="box1"
+								style="background: #fff2cc; border: 1px solid black; width: auto; height: 300px; border-radius: 5%; text-align: center; padding: 4%;">
+								domain-aligned team</div>
+							<div data-id="box3"
+								style="background: #d5e8d4; border: 1px solid black; width: auto; height: auto; border-radius: 50%; text-align: center; vertical-align: middle; padding: 3%;">
+								system</div>
+						</div>
+						<div class="r-stack col">
+							<div data-id="box2"
+								style="background: #dae8fc; border: 1px solid black; width: auto; height: 300px; border-radius: 5%; text-align: center; padding: 4%;">
+								centralized team</div>
+							<div data-id="box3"
+								style="background: #d5e8d4; border: 1px solid black; width: auto; height: auto; border-radius: 50%; text-align: center; vertical-align: middle; padding: 3%;">
+								system</div>
+						</div>
+						<div class="r-stack col">
+							<div data-id="box6"
+								style="background: #fff; border: 1px solid black; width: auto; height: auto; border-radius: 0%; text-align: center; padding: 4%;">
+								output</div>
+						</div>
+					</div>
+				</section>
+				<section data-background="#fff">
+					<h3>What this survey is about</h3>
+					<p>For CPI Production systems around the world, we aim to</p>
+					<ul>
+						<li><b>characterize</b> team interactions and system organizations,</li>
+						<li><b>identify</b> the tools and practices currently in use, and </li>
+						<li><b>infer</b> how these factors relate to key business outcomes.</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Why we are running the survey</h3>
+					<ul>
+						<li>Alternative Data Source (ADS) usage in CPI systems demands significant technical expertise
+							<b>across multiple skill domains</b>.
+						</li>
+						<li>Developing and maintaining CPI systems that use ADS can <b>cut across organizational
+								silos</b>.</li>
+						<li>Lifetime of CPI systems and practices can <b>span decades</b>.</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Why we are running the survey</h3>
+					<p>As far as we know, we are the first to:</p>
+					<ul>
+						<li>characterize the state of team and system organization,</li>
+						<li>identify the tools and practices being used, or</li>
+						<li>understand how these characteristics relate to business outcomes (including ADS adoption).
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Explanation of Key Concepts</h3>
+					<p>
+						In this section, we cover the key terms and concepts used throughout the survey.
+					</p>
+				</section>
+				<section>
+					<h3>System</h3>
+					<p class="r-fit-text">
+						A <b>system</b> is any <b>indivisible</b><sup>1</sup> <b>software component</b> that takes
+						<b>data input(s)</b> and
+						produces <b>data output(s)</b>.
+					</p>
+					<img width="60%" src="./diagrams/gsbpm-systems.drawio.svg" alt="System diagram">
+					<div style="text-align: left; font-size: smaller">
+						<p>
+							<small>
+								1: I.e., the component runs <b>entirely</b> or <b>not at all</b>.
+							</small>
+						</p>
+					</div>
+				</section>
+				<section>
+					<table class="r-fit-text">
+						<h3>GSBPM Processing Steps</h3>
+						<tr>
+							<th>Process</th>
+							<th>Explanation</th>
+							<th></th>
+						</tr>
+						<tr class="fragment">
+							<td><b>Ingestion</b></td>
+							<td>Getting <b>acquired data</b> into a <b>machine-readable state</b> where it is
+								<b>ready</b> for further processing.
+							</td>
+							<td></td>
+						</tr>
+						<tr class="fragment">
+							<td><b>Processing</b></td>
+							<td><b>Preparing the data</b> to produce elementary indexes.</td>
+							<td></td>
+						</tr>
+						<tr class="fragment">
+							<td><b>Elementary Indexes</b></td>
+							<td>Calculate <b>elementary indexes</b> using the processed data.</td>
+							<td></td>
+						</tr>
+						<tr class="fragment">
+							<td><b>Aggregation</b></td>
+							<td>Aggregateelementary price indexes into <b>higher-level indexes</b>.</td>
+							<td></td>
+						</tr>
+						<tr class="fragment">
+							<td><b>Finalization</b></td>
+							<td>Store price indexes for <b>subsequent use</b> and <b>dissemination</b>.</td>
+							<td></td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h3>Flow of Work</h3>
+					<p class="r-fit-text">
+						The direction of GSBPM processing steps from <b>raw data</b> to <b>final outputs</b>.
+					</p>
+					<img width="100%" src="./diagrams/gsbpm-systems-2.drawio.svg" alt="Flow of work diagram">
+				</section>
+				<section>
+					<h3>Team</h3>
+					<p class="r-fit-text">
+						A <b>group of individuals</b> who maintains <b>one or more systems</b>.
+					</p>
+					<img width="100%" src="./diagrams/gsbpm-systems-2.drawio.svg" alt="Flow of work diagram">
+					<div class="fragment" style="text-align: left; font-size: smaller">
+						<p>
+							<small>
+								<b>Note</b>: One system can <b>cut across</b> GSBPM steps.
+							</small>
+						</p>
+					</div>
+					<div class="fragment" style="text-align: left; font-size: smaller">
+						<p>
+							<small>
+								<b>Note</b>: More than one system can exist <b>within</b> a single GSBPM step.
+							</small>
+						</p>
+					</div>
+				</section>
+				<section>
+					<h3>Domain-Aligned Team</h3>
+
+					<div style="background: #fff2cc; text-align: center; padding-left: 1%; border-radius: 10px;">
+						<p class="r-fit-text">
+							A <b>group of individuals</b> who are <b>functionally embedded</b> within the CPI team.
+							These teams tend to have significant <b>CPI domain knowledge</b>.
+						</p>
+					</div>
+					<p class="fragment">
+						<small>This is in contrast to a...</small>
+					</p>
+					<h3 class="fragment">Centralized Team</h3>
+
+					<div class="fragment"
+						style="background: #dae8fc; text-align: center; padding-left: 1%; border-radius: 10px;">
+						<p class="r-fit-text">
+							A <b>group of individuals</b> who are <b>centralized elsewhere</b> in the organization.
+							These teams tend to <b>NOT</b> have significant <b>domain knowledge</b>.
+						</p>
+					</div>
+				</section>
+				<section>
+					<h3>Putting it all together</h3>
+					<img height="100%" src="./diagrams/gsbpm-systems-3.drawio.svg" alt="System diagram">
+				</section>
+				<section>
+					<h3>Ingestion</h3>
+					<div class="container" style="display: grid; grid-auto-flow: column; column-gap: 2%;">
+						<div class="col">
+							<img height="75%" src="./diagrams/ingestion.PNG" alt="System diagram">
+						</div>
+						<div class="col">
+							<ul>
+								<li>
+									A (domain-aligned) group of economists in the CPI team maintain a single system for
+									one data source.
+								</li>
+								<li>
+									A (central) corporate IT team maintains a single system that manages the ingestion
+									of the remaining data that calculates the CPI.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Processing and Elementary Indexes</h3>
+					<div class="container" style="display: grid; grid-auto-flow: column; column-gap: 2%;">
+						<div class="col">
+							<ul>
+								<li>
+									The top (domain-aligned) team maintains one system that handles <b>both</b>
+									processing and elementary index calculation<sup>1</sup>.
+								</li>
+								<li>
+									Each of the remaining (domain-aligned) teams maintain <b>two systems</b> that
+									<b>separately</b> handle processing and elementary index calculation.
+								</li>
+							</ul>
+							<div class="fragment" style="text-align: left; font-size: smaller">
+								<p>
+									<small>
+										<b>Note</b>: For the top system, it is <b>not straightforward</b> to make
+										significant changes to the processing component without also affecting the
+										elementary index component.
+									</small>
+								</p>
+							</div>
+						</div>
+						<div class="col">
+							<img height="65%" src="./diagrams/processing-elementary.PNG"
+								alt="System diagram">
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Aggregate and Finalize</h3>
+					<div class="container" style="display: grid; grid-auto-flow: column; column-gap: 2%;">
+						<div class="col">
+							<img height="75%" src="./diagrams/aggregate-finalize.PNG"
+								alt="System diagram">
+						</div>
+						<div class="col">
+							<ul>
+								<li>
+									A second (central) corporate IT system implements <b>both</b> aggregation <b>and</b>
+									finalization <b>for every</b> upstream elementary index.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<h3>Concluding Thoughts</h3>
+
+					<ul>
+						<li>
+							Goal is to have a <b>lingua franca</b> for <b>all CPI employees</b> to express team
+							organization and system architecture concepts.
+						</li>
+						<li>
+							Our goal is <b>not</b> to create an exact replica of your CPI system using these diagrams;
+							rather,
+							we are trying to <b>roughly characterize</b> the <b>germane aspects</b> of team and system
+							organization.</b>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Survey Walkthrough</h3>
+					<p>
+						In this section, we go through each page of the survey.
+					</p>
+				</section>
+				<section>
+					<h3>Page 1: System Boundaries</h3>
+					<p>
+						The point of this page is to understand if and when <b>systems</b> cut across GSBPM staps.
+					</p>
+					<p>
+						We are also interested in <b>how many systems</b> are used for each GSBPM step.
+					</p>
+				</section>
+				<section>
+					<h3>
+						Page 1: The two extremes
+					</h3>
+					<img height="600px" src="./diagrams/gsbpm-modular.drawio.svg" alt="Modular system diagram">
+				</section>
+				<section>
+					<h3>
+						Page 1: The two extremes
+					</h3>
+					<img height="600px" src="./diagrams/gsbpm-monolith.drawio.svg" alt="Monolithic system diagram">
+				</section>
+				<section>
+					<h3>Page 2: Team Boundaries</h3>
+					<p class="r-fit-text">
+						In this page, we're trying to learn which <b>kinds of teams</b> are involved in each GSBPM step.
+					</p>
+					<table class="r-fit-text">
+						<tr>
+							<th>Team Type</th>
+							<th>Description</th>
+							<th></th>
+						</tr>
+						<tr>
+							<td><b>Corporate IT</b></td>
+							<td>Information Technology (IT) professionals who are part of an <b>organization-wide
+									central group</b>.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><b>Domain-embedded IT</b></td>
+							<td><b>IT professionals who are functionally embedded in the CPI team (i.e., part of the CPI
+									team, <b>not</b> the corporate IT department).</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><b>Domain-embedded Analysts</b></td>
+							<td>Professionals <b>without a formal IT background</b> (e.g., economists, statisticians)
+								who are <b>functionally embedded</b> in the CPI team.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><b>Elsewhere Analysts</b></td>
+							<td>Professionals without a formal IT background who are <b>not</b> functionally embedded in
+								the price statistics team.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><b>External Consultants/Contractors</b></td>
+							<td>Professionals <b>outside of the organization</b> to whom system development/maintenance
+								work is <b>contracted</b>.</td>
+							<td></td>
+						</tr>
+					</table>
+				</section>
+				<section>
+					<h3>Page 3: Joint Team-System Organization</h3>
+					<ul>
+						<li>
+							For a <b>representative group</b> of systems used in your CPI production, we want to
+							understand the joint team-system organization.
+						</li>
+						<li>
+							It is often <b>not feasible</b>
+							to ask respondents to characterize the joint team-system topology <b>for every system</b>
+							invovled
+							with CPI production.
+						</li>
+						<li>
+							No strict definition - the idea is to think of the group of systems that participate in the
+							<b>typical</b> flow of work.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Example: Representative Group</h3>
+					<img height="600px" src="./diagrams/gsbpm-systems-3-highlight.drawio.svg"
+						alt="Monolithic system diagram">
+				</section>
+				<section>
+					<h3>Representative Group Takeaways</h3>
+					<ul>
+						<li>
+							The important part of this question is being able to accurately describe <b>which teams</b>
+							maintain <b>which groups of systems</b>.
+						</li>
+						<li>
+							The point of specifying a <b>representative group</b> in terms of <b>system groups</b> is
+							that there may be a group of distinct systems that all <b>behave the same way</b>. For the
+							purposes of this question, we can consider these distinct systems as part of the same
+							grouping.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Page 4: Tools</h3>
+					<p>In this page, we simply ask about the various software tools used in your CPI production systems.
+					</p>
+				</section>
+				<section>
+					<h3>Page 5: System Age and Update Frequency</h3>
+					<ul>
+						<li>
+							In this page, we are trying to learn how old the <b>majority</b> of systems are, and
+							approximately how frequently the <b>majority</b> of systems are updated.
+						</li>
+						<li>
+							We are only looking for <b>coarse-grained answers</b> here. The answers are presented as intervals so that you need not know precicsely how old a system is or exactly how frequently it is updated.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Page 6: Number of Individuals to Implement Changes</h3>
+					<ul>
+						<li>
+							In this page, we are trying to learn <b>how many individuals</b> need to be involved with small and large changes to systems in each GSBPM step.
+						</li>
+						<li>
+							Again, in this question we are asking about the <b>typical</b> system in your organization.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Page 7: Obstacles to ADS Adoption</h3>
+					<ul>
+						<li>
+							In this page, we are trying to understand what the <b>implementation gap</b> in adoption of ADS in the production of the CPI.
+						</li>
+						<li>
+							We also ask respondents to rank various common challenges to see if there are any challenges that are commonly faced across organizations.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Page 8: How long changes take</h3>
+					<ul>
+						<li>
+							In this page, we are trying to understand <b>how long</b> it takes to introduce various changes to systems in each GSBPM step.
+						</li>
+						<li>
+							Similar to previous questions, we are asking for this response about the <b>typical</b> system in each GSBPM category.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Page 9: General Challenges Facing CPI Teams</h3>
+					<ul>
+						<li>
+							In this page, we are trying to understand the primary challenges facing CPI teams across organizations, regardless of whether ADS are used.
+						</li>
+						<li>
+							Our hope here is to better understand if there are any common challenges facing organizations.
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Pages 10 and 11: General Feedback and Task Team Feedback</h3>
+					<ul>
+						<li>
+							Page 10 provides a plain text field where you can write any additional information about your CPI systems (<b>we will personally read this field</b> for each respondent).
+						</li>
+						<li>
+							Page 11 is for users to provide feedback about the Task Team on Scanner Data.
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>What we hope to learn</h3>
+					<ol>
+						<li>Provide descriptive statistics to characterize the state of CPI systems around the world in 2025.</li>
+						<li>Discover "archetypes" for organizations that have certain characteristics in common.</li>
+						<li>Correlate archetypes with business outcomes of interest.</li>
+						<li>Where possible (if anywhere), make inferences about changes that can lead to improved busienss outcomes.</li>
+					</ol>
+				</section>
+			</section>
+		</div>
+		</section>
+
+		</section>
+	</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
