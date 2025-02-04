@@ -1,0 +1,3 @@
+# Preface {.unnumbered}
+
+We would like to acknowledge the helpful feedback and numerous contributions from our colleagues in the Workstream on CPI Systems Architecture in the [Task Team on Scanner Data](https://unstats.un.org/bigdata/task-teams/scanner/index.cshtml) under the [UN Committee of Experts on Big Data and Data Science for Official Statistics](https://unstats.un.org/bigdata/).
