@@ -1,0 +1,25 @@
+project:
+  type: book
+
+book:
+  title: "Survey of CPI Production Systems"
+  author: "Collin Brown and Steve Martin"
+  date: "2/3/2025"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - concepts.qmd
+    - systems-teams-analysis.qmd
+    - tools-and-technology.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+

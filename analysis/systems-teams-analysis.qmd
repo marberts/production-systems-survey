@@ -1,0 +1,75 @@
+# Systems and Teams {#sec-sys-team}
+
+```{r message=FALSE}
+#| label: fig-num-systems-each-step
+#| layout-ncol: 2
+#| echo: false
+#| out-width: "100%"
+#| fig-cap:
+#| - Ingestion Systems
+#| - Processing Systems
+#| - Elementary indexes Systems
+#| - Aggregation Systems
+#| - Finalization Systems
+#| - One or More Systems Handle One or More Steps
+
+library(ggplot2)
+library(dplyr)
+
+df <- read.csv("./data/results.csv")[,10:20]  |> rename(
+    ingestion = "Approximately.how.many.distinct.systems.exist.for.each.step.to.make.your.CPI...Data.ingestion.",
+    processing = "Approximately.how.many.distinct.systems.exist.for.each.step.to.make.your.CPI...Data.processing.",
+    elementary = "Approximately.how.many.distinct.systems.exist.for.each.step.to.make.your.CPI...Elementary.indexes.",
+    aggregation = "Approximately.how.many.distinct.systems.exist.for.each.step.to.make.your.CPI...Aggregation.",
+    finalization = "Approximately.how.many.distinct.systems.exist.for.each.step.to.make.your.CPI...Finalization.",
+    same_system = "For.any.of.your.systems..is.it.the.case.that.the.same.system.handles.more.than.one.step.for.making.your.CPI.",
+    ingestion_same = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Data.ingestion.",
+    processing_same = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Data.processing.",
+    elementary_same = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Elementary.indexes.",
+    aggregation_same = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Aggregation.",
+    finalization_same = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Finalization."
+    )
+df[sapply(df, is.character)] <- lapply(df[sapply(df, is.character)], as.factor)
+
+ggplot(subset(df, ingestion != ""), aes(y=ingestion)) + geom_bar(fill="#d5e8d4")
+ggplot(subset(df, processing != ""), aes(y=processing)) + geom_bar(fill="#d5e8d4")
+ggplot(subset(df, elementary != ""), aes(y=elementary)) + geom_bar(fill="#d5e8d4")
+ggplot(subset(df, aggregation != ""), aes(y=aggregation)) + geom_bar(fill="#d5e8d4")
+ggplot(subset(df, finalization != ""), aes(y=finalization)) + geom_bar(fill="#d5e8d4")
+ggplot(subset(df, same_system != "N/A"), aes(x=same_system)) + geom_bar(fill="blue")
+```
+
+```{r}
+df <- read.csv("./data/results.csv")[,15:40]  |> rename(
+    ingestion_1 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Data.ingestion."    ,
+    processing_1 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Data.processing."   ,
+    elementary_1 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Elementary.indexes.",
+    aggregation_1 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Aggregation."       ,
+    finalization_1 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Finalization."      ,
+    ingestion_2 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.2..Data.ingestion."    ,
+    processing_2 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.2..Data.processing."   ,
+    elementary_2 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.2..Elementary.indexes.",
+    aggregation_2 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.2..Aggregation."       ,
+    finalization_2 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.2..Finalization."      ,
+    ingestion_3 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.3..Data.ingestion."    ,
+    processing_3 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.3..Data.processing."   ,
+    elementary_3 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.3..Elementary.indexes.",
+    aggregation_3 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.3..Aggregation."       ,
+    finalization_3 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.3..Finalization."      ,
+    ingestion_4 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.4..Data.ingestion."    ,
+    processing_4 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.4..Data.processing."   ,
+    elementary_4 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.4..Elementary.indexes.",
+    aggregation_4 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.4..Aggregation."       ,
+    finalization_4 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.4..Finalization."      ,
+    ingestion_5 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.5..Data.ingestion."    ,
+    processing_5 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.5..Data.processing."   ,
+    elementary_5 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.5..Elementary.indexes.",
+    aggregation_5 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.5..Aggregation."       ,
+    finalization_5 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.5..Finalization.",
+)
+df$ingestion <- rowSums(df[,c("ingestion_1", "ingestion_2", "ingestion_3", "ingestion_4", "ingestion_5")], na.rm=TRUE)
+df$processing <- rowSums(df[,c("processing_1", "processing_2", "processing_3", "processing_4", "processing_5")], na.rm=TRUE)
+df$elementary <- rowSums(df[,c("elementary_1", "elementary_2", "elementary_3", "elementary_4", "elementary_5")], na.rm=TRUE)
+df$aggregation <- rowSums(df[,c("aggregation_1", "aggregation_2", "aggregation_3", "aggregation_4", "aggregation_5")], na.rm=TRUE)
+df$finalization <- rowSums(df[,c("finalization_1", "finalization_2", "finalization_3", "finalization_4", "finalization_5")], na.rm=TRUE)
+```

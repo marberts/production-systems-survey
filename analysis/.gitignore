@@ -1,0 +1,6 @@
+/.quarto/
+
+_book/
+
+# Ignore local copy of data
+data/

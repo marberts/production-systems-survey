@@ -1,0 +1,40 @@
+# Introduction
+
+::: {layout-ncol=2}
+
+We created this survey about the state of Consumer Price Index (CPI) Production Systems on behalf of the [Task Team on Scanner Data](https://unstats.un.org/bigdata/task-teams/scanner/index.cshtml) under the [UN Committee of Experts on Big Data and Data Science for Official Statistics](https://unstats.un.org/bigdata/).
+
+![](https://unstats.un.org/bigdata/assets/img/logo/logo_2021_long.png)
+:::
+
+While this report is specific to the state of CPI Production Systems at National Statistics Organizations (NSOs) around the world, we attempt to explain our results in a general way and highlight opportunities where our survey approach could be applied in related settings.
+
+## Overview of CPI Production Systems
+
+CPI Production Systems are complex [sociotechnical systems](https://en.wikipedia.org/wiki/Sociotechnical_system) that require significant expertise across multiple skill domains such as Economics, Statistics, and Computer Science in order to develop and maintain them. The recent adoption of alternative data sources[^1] has significantly increased the complexity of these systems, and has increased the importance of skills in newly emerging disciplines such as [Data Science](https://en.wikipedia.org/wiki/Data_science), [Data Engineering](https://en.wikipedia.org/wiki/Data_engineering), and [Analytics Engineering](https://www.getdbt.com/what-is-analytics-engineering).
+
+[^1]: In the context of CPI systems, alternative data sources refer to data such as retailer scanner and web-scraped data that can be used to calculate the component price changes that are used in CPI calculations.
+
+## What This Survey Is About
+
+We are trying to characterize how CPI Systems and the teams that own them are organized in order to improve business outcomes for these teams.
+
+Our survey asks a series of questions about how software systems and teams are organized with respect to a fairly generic data processing workflow. We then ask several questions related to the various tools and technologies being used by the various teams maintaining CPI Systems. We conclude by asking a series of questions related to business outcomes of interest.
+
+## Related Work
+
+We borrow and adapt several ideas presented in @skelton2019team such as the concepts of [Stream-aligned teams and the Flow of change](https://teamtopologies.com/key-concepts) in our survey. These concepts (discussed in greater detail in the following sections) can be applied to understand how teams are organized around the various steps in a complex data processing workflow.
+
+We also borrow a number of ideas from @forsgren2018accelerate. Particularly, multiple of the DevOps Research and Assessment (DORA) metrics presented are highly relevant in measuring the business outcomes of teams that maintain CPI systems.[^2]
+
+[^2]: We use slightly different terminology to refer to these concepts throughout the survey in order to use language that our target audience is most likely familiar with.
+
+We believe that multiple ideas presented in @dehghani2022data are highly applicable to the CPI Systems under study. Specifically, we believe that the concept of [Data-as-a-Product](https://www.thoughtworks.com/en-ca/insights/articles/leveraging-data-as-a-product-a-strategic-imperative-for-business-leaders) (and teams organized around these Data Products) provides a useful framework for thinking about how these systems and teams interact with one another. We also contrast domain-oriented decentralized teams with centralized teams.
+
+## How This Report Is Organized
+
+@sec-concepts covers the key concepts used in the survey. @sec-sys-team analyzes our findings with respect to system and team organization.
+
+## Note on Confidentiality and Privacy
+
+As part of the administration of this survey, we ensured respondents that their data will be treated confidentiality. Therefore, no individual response data are made available in this report; all results presented are aggregated over all responses.
