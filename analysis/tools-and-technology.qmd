@@ -68,6 +68,78 @@ dat <- data.frame(
 
 # Fill NA with zero
 dat$Frequency = ifelse(dat$Frequency == "Yes", 1, 0)
-ggplot(dat, aes(x=VCS, y=Frequency)) + geom_bar(stat="identity", fill="#0052CC") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+ggplot(dat, aes(x=Software, y=Frequency)) + geom_bar(stat="identity", fill="#0052CC") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 
+```
+
+
+
+```{r message = FALSE}
+#| echo: false
+#| 
+
+library(dplyr)
+library(ggplot2)
+
+df <- read.csv("./data/results.csv")
+
+df <- df |> rename(
+  python=colnames(df)[151],
+  r=colnames(df)[152],
+  julia=colnames(df)[153],
+  scala=colnames(df)[154],
+  java=colnames(df)[155],
+  csharp=colnames(df)[156],
+  corcpp=colnames(df)[157],
+  vb=colnames(df)[158],
+  vba=colnames(df)[159],
+  sas=colnames(df)[160],
+  stata=colnames(df)[161],
+  spss=colnames(df)[162],
+  sql=colnames(df)[163],
+  none=colnames(df)[164],
+  other=colnames(df)[165],
+)
+
+# Version control
+dat <- data.frame(
+  Frequency = c(
+    df$python,
+    df$r,
+    df$julia,
+    df$scala,
+    df$java,
+    df$csharp,
+    df$corcpp,
+    df$vb,
+    df$vba,
+    df$sas,
+    df$stata,
+    df$spss,
+    df$sql,
+    df$none,
+    df$other
+  ),
+  VCS = c(
+    rep("Python", each=nrow(df)),
+    rep("R", each=nrow(df)),
+    rep("Julia", each=nrow(df)),
+    rep("Scala", each=nrow(df)),
+    rep("Java", each=nrow(df)),
+    rep("C#", each=nrow(df)),
+    rep("C/C++", each=nrow(df)),
+    rep("Visual Basic", each=nrow(df)),
+    rep("Visual Basic Applications", each=nrow(df)),
+    rep("SAS", each=nrow(df)),
+    rep("Stata", each=nrow(df)),
+    rep("SPSS", each=nrow(df)),
+    rep("SQL", each=nrow(df)),
+    rep("None", each=nrow(df)),
+    rep("Other", each=nrow(df)),
+  )
+)
+
+# Fill NA with zero
+dat$Frequency = ifelse(dat$Frequency == "Yes", 1, 0)
+ggplot(dat, aes(x=VCS, y=Frequency)) + geom_bar(stat="identity", fill="#F1502F") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
