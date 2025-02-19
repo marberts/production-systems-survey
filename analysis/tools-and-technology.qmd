@@ -1,1 +1,73 @@
 # Tools and Technologies {#sec-tools-tech}
+
+```{r message = FALSE}
+#| echo: false
+#| 
+
+library(dplyr)
+library(ggplot2)
+
+df <- read.csv("./data/results.csv")
+
+df <- df |> rename(
+  use_open_source_pkg=colnames(df)[118],
+  not_use_not_know=colnames(df)[120],
+  not_use_insuff_doc=colnames(df)[121],
+  not_use_code_not_maintain=colnames(df)[122],
+  not_use_not_suitable=colnames(df)[123],
+  not_use_not_integrate=colnames(df)[124],
+  not_use_no_skills=colnames(df)[125],
+  not_use_other=colnames(df)[126],
+  vc_git=colnames(df)[137],
+  vc_github=colnames(df)[138],
+  vc_svn=colnames(df)[139],
+  vc_hg=colnames(df)[140],
+  vc_commercial=colnames(df)[141],
+  vc_naming_convention=colnames(df)[142],
+  vc_none=colnames(df)[143],
+  vc_other=colnames(df)[144],
+  pm_jira=colnames(df)[145],
+  pm_gh_proj=colnames(df)[146],
+  pm_gitlab_issue=colnames(df)[147],
+  pm_share_excel=colnames(df)[148],
+  pm_none=colnames(df)[149],
+  pm_other=colnames(df)[150],
+)
+
+# Version control
+dat <- data.frame(
+  Frequency = c(df$vc_git, df$vc_github, df$vc_svn, df$vc_hg, df$vc_commercial, df$vc_naming_convention, df$vc_none, df$vc_other),
+  VCS = c(
+    rep("Git", each=nrow(df)),
+    rep("GitHub/GitLab", each=nrow(df)),
+    rep("Subversion", each=nrow(df)),
+    rep("Mercurial", each=nrow(df)),
+    rep("Built-In Versioning", each=nrow(df)),
+    rep("File Naming Conventions", each=nrow(df)),
+    rep("None", each=nrow(df)),
+    rep("Other", each=nrow(df))
+  )
+)
+
+# Fill NA with zero
+dat$Frequency = ifelse(dat$Frequency == "Yes", 1, 0)
+ggplot(dat, aes(x=VCS, y=Frequency)) + geom_bar(stat="identity", fill="#F1502F") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+# Project Management
+dat <- data.frame(
+  Frequency = c(df$pm_jira, df$pm_gh_proj, df$pm_gitlab_issue, df$pm_share_excel, df$pm_none, df$pm_other),
+  Software = c(
+    rep("Jira", each=nrow(df)),
+    rep("GitHub Projects", each=nrow(df)),
+    rep("GitLab Milestones", each=nrow(df)),
+    rep("Shared Excel Workbook", each=nrow(df)),
+    rep("None", each=nrow(df)),
+    rep("Other", each=nrow(df))
+  )
+)
+
+# Fill NA with zero
+dat$Frequency = ifelse(dat$Frequency == "Yes", 1, 0)
+ggplot(dat, aes(x=VCS, y=Frequency)) + geom_bar(stat="identity", fill="#0052CC") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+
+```
