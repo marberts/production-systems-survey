@@ -65,7 +65,7 @@ df[df == "Bureaucratic and process challenges (e.g., many \"approval\" steps are
 
 # Overlay all histograms on one plot
 dat <- data.frame(
-  Frequency = c(
+  Challenges = c(
     df$rank1,
     df$rank2,
     df$rank3,
@@ -104,10 +104,10 @@ dat <- data.frame(
 )
 
 # Replace empty string with NA
-dat <- dat[dat$Frequency != "",]
-dat <- dat[!is.na(dat$Frequency),]
+dat <- dat[dat$Challenges != "",]
+dat <- dat[!is.na(dat$Challenges),]
 
-ggplot(dat,aes(x=Frequency, fill=Ranking)) +
-  geom_bar(alpha=1, position="stack") +
+ggplot(dat,aes(x=Challenges, fill=Ranking)) +
+  geom_bar(alpha=1, position="stack", color="black") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
