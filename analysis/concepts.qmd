@@ -1,1 +1,29 @@
 # Concepts {#sec-concepts}
+
+This survey is concerned with the interaction between teams, software systems, and the flow of change from input (upstream) data to output (downstream) data.
+
+Since this survey is specifically focused on CPI Production Systems, we orient the flow of change around key [Generic Statistical Business Process Model (GSBPM)](https://unece.org/statistics/documents/2019/01/standards/gsbpm-v51) steps. Some of these steps are quite generic and common to most data teams (e.g., Ingestion, Processing), while others are very specific to CPI teams (e.g., Elementary Index Calculation, Elementary Index Aggregation). 
+
+The concepts introduced in the rest of this page can easily be applied to other domain-specific workflows, but everything that follows is implicitly explained in the context of these GSBPM steps.
+
+## Systems and Teams
+
+::: {layout-ncol=2}
+![System Diagram](./diagrams/gsbpm-systems.drawio.png)
+
+For the purposes of this survey, we define a **system** as any indivisible (atomic) software component that takes one or more data inputs and produces one or more data outputs.
+:::
+
+When we refer to an indivisible software component, we mean that the component runs "entirely or not at all" with respect to the transformation of inputs into outputs. For example, if there is one Python script that reads a file and writes an intermediate file, and a second R script that reads the intermediate file and produces another output file, we would consider this to be two systems.
+
+The types of systems developed and maintained by the teams being surveyed can vary wildly. Therefore, we intentionally keep the definition of system vague so that it captures the key activity of transforming data without imposing any assumptions about how data are transformed.
+
+A **team** is defined as a group of individuals who maintains one or more systems. Teams can be composed of many different types of professionals, but for the purpose of this survey we distinguish between those who are Information Technology (IT) professionals (e.g., software developers) and those who are non-IT analysts (e.g., economists, statisticians).[^1]
+
+[^1]: We recognize there is some grey area as to whether or not certain occupations are considered to be IT, and that two organizations may classify the same positions differently.
+
+Importantly, we also distinguish whether these teams are embedded in the price-statistics domain of the organization or work elsewhere in the organization. The detail we care about here is whether the team developing and maintaining one or more systems shares business context and domain knowledge with the team making use of these systems, or whether they do not share this business context and domain knowledge.
+
+## Flow of Change
+
+
