@@ -76,7 +76,6 @@ ggplot(dat, aes(x=Software, y=Frequency)) + geom_bar(stat="identity", fill="#005
 
 ```{r message = FALSE}
 #| echo: false
-#| 
 
 library(dplyr)
 library(ggplot2)
@@ -98,7 +97,7 @@ df <- df |> rename(
   spss=colnames(df)[162],
   sql=colnames(df)[163],
   none=colnames(df)[164],
-  other=colnames(df)[165],
+  other=colnames(df)[165]
 )
 
 # Version control
@@ -120,7 +119,7 @@ dat <- data.frame(
     df$none,
     df$other
   ),
-  VCS = c(
+  Language = c(
     rep("Python", each=nrow(df)),
     rep("R", each=nrow(df)),
     rep("Julia", each=nrow(df)),
@@ -135,11 +134,11 @@ dat <- data.frame(
     rep("SPSS", each=nrow(df)),
     rep("SQL", each=nrow(df)),
     rep("None", each=nrow(df)),
-    rep("Other", each=nrow(df)),
+    rep("Other", each=nrow(df))
   )
 )
 
 # Fill NA with zero
 dat$Frequency = ifelse(dat$Frequency == "Yes", 1, 0)
-ggplot(dat, aes(x=VCS, y=Frequency)) + geom_bar(stat="identity", fill="#F1502F") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+ggplot(dat, aes(x=Language, y=Frequency)) + geom_bar(stat="identity", fill="#FFE873") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```
