@@ -98,13 +98,16 @@ ggplot(dat,aes(x=Frequency, fill=Step)) + geom_histogram(alpha=0.6, position="st
 
 
 ```{r message = FALSE}
-#| label: fig-num-systems-each-step
+#| label: fig-steps-by-team-type
 #| layout-ncol: 2
 #| echo: false
 #| out-width: "100%"
 #| fig-cap:
 #| - Steps Handled by Central IT
 #| - Steps Handled by Domain-Embedded IT
+#| - Steps Handled by Domain-Embedded Analysts
+#| - Steps Handled by Analysts Elsewhere in the Organization
+#| - Steps Handled by Contractors
 
 df <- read.csv("./data/results.csv")
 
@@ -171,4 +174,56 @@ dat[is.na(dat)] = 0
 
 ggplot(dat, aes(x=Step, y=Frequency)) + geom_bar(stat="identity", fill="#fff2cc")
 
+
+# Domain embedded analysts
+
+dat <- data.frame(
+  Frequency = c(df$ingestion_d_analyst, df$processing_d_analyst, df$elementary_d_analyst, df$agg_d_analyst, df$fin_d_analyst),
+  Step = c(
+    rep("Inegstion", each=nrow(df)),
+    rep("Processing", each=nrow(df)),
+    rep("Elementary indexes", each=nrow(df)),
+    rep("Aggregation", each=nrow(df)),
+    rep("Finalization", each=nrow(df))
+  )
+)
+
+# Fill NA with zero
+dat[is.na(dat)] = 0
+
+ggplot(dat, aes(x=Step, y=Frequency)) + geom_bar(stat="identity", fill="#fff2cc")
+
+# Elsewhere Analysts
+dat <- data.frame(
+  Frequency = c(df$ingestion_e_analyst, df$processing_e_analyst, df$elementary_e_analyst, df$agg_e_analyst, df$fin_e_analyst),
+  Step = c(
+    rep("Inegstion", each=nrow(df)),
+    rep("Processing", each=nrow(df)),
+    rep("Elementary indexes", each=nrow(df)),
+    rep("Aggregation", each=nrow(df)),
+    rep("Finalization", each=nrow(df))
+  )
+)
+
+# Fill NA with zero
+dat[is.na(dat)] = 0
+
+ggplot(dat, aes(x=Step, y=Frequency)) + geom_bar(stat="identity", fill="#dae8fc")
+
+# Consultants
+dat <- data.frame(
+  Frequency = c(df$ingestion_consultant, df$processing_consultant, df$elementary_consultant, df$agg_consultant, df$fin_consultant),
+  Step = c(
+    rep("Inegstion", each=nrow(df)),
+    rep("Processing", each=nrow(df)),
+    rep("Elementary indexes", each=nrow(df)),
+    rep("Aggregation", each=nrow(df)),
+    rep("Finalization", each=nrow(df))
+  )
+)
+
+# Fill NA with zero
+dat[is.na(dat)] = 0
+
+ggplot(dat, aes(x=Step, y=Frequency)) + geom_bar(stat="identity")
 ```
