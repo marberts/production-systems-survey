@@ -4,6 +4,106 @@
 #| echo: false
 
 library(dplyr)
+library(forcats)
+library(ggplot2)
+
+df <- read.csv("./data/results.csv")
+df <- df[df[,2] != "",]
+
+# Overall Challenges
+
+df <- df |> rename(
+  rank1=colnames(df)[230],
+  rank2=colnames(df)[231],
+  rank3=colnames(df)[232],
+  rank4=colnames(df)[233],
+  rank5=colnames(df)[234],
+  rank6=colnames(df)[235],
+  rank7=colnames(df)[236],
+  rank8=colnames(df)[237],
+  rank9=colnames(df)[238],
+  rank10=colnames(df)[239],
+  rank11=colnames(df)[240],
+  rank12=colnames(df)[241],
+)
+
+# Shorten value names
+df[df == "Lack of cooperation with owners of alternative data sources."] = "Lack of Provider Cooperation"
+
+df[df == "Lack of organizational capacity (e.g., corporate IT could assist, but there is no capacity)."] = "Insufficient Capacity"
+
+df[df == "So costly that it is not worth implementing."] = "Too Costly"
+
+df[df == "Concerns about data quality from alternative sources."] = "Data Quality Issues"
+
+df[df == "Lack of funding to procure alternative data."] = "Insufficient Funding"
+
+df[df == "None of these (we do not face any challenges)."] = "No Challenges"
+
+df[df == "Lack of availability of alternative data."] = "Data Availability"
+
+df[df == "Concerns about legal challenges to acquiring alternative data (e.g., lack of authority to web scrape prices)."] = "Insufficient Authority"
+
+df[df == "None of these (we do not face any challenges)."] = "No Challenges"
+
+df[df == "Lack of skills within the domain team to make use of alternative data."] = "Insufficient Skills"
+
+df[df ==  "No legal mechanism to require sharing data with your office, or no willingness to compel sharing data."] = "No Willingness"
+
+df[df == "Lack of availability of alternative data."] = "Insufficient Availability"
+
+df[df == "Lack of mandate (not a priority)."] = "Not a Priority"
+
+df[df == "Lack of methodological knowledge to calculate price statistics from alternative data."] = "Methodology Knowledge"
+
+
+
+# Overlay all histograms on one plot
+dat <- data.frame(
+  Challenges = c(
+    df$rank1,
+    df$rank2,
+    df$rank3,
+    df$rank4,
+    df$rank5,
+    df$rank6,
+    df$rank7,
+    df$rank8,
+    df$rank9,
+    df$rank10,
+    df$rank11,
+    df$rank12
+  ),
+  Ranking = c(
+    rep("Rank 1", each=nrow(df)),
+    rep("Rank 2", each=nrow(df)),
+    rep("Rank 3", each=nrow(df)),
+    rep("Rank 4", each=nrow(df)),
+    rep("Rank 5", each=nrow(df)),
+    rep("Rank 6", each=nrow(df)),
+    rep("Rank 7", each=nrow(df)),
+    rep("Rank 8", each=nrow(df)),
+    rep("Rank 9", each=nrow(df)),
+    rep("Rank 10", each=nrow(df)),
+    rep("Rank 11", each=nrow(df)),
+    rep("Rank 12", each=nrow(df))
+  )
+)
+
+# Replace empty string with NA
+dat <- dat[dat$Challenges != "",]
+dat <- dat[!is.na(dat$Challenges),]
+
+ggplot(dat,aes(x=forcats::fct_infreq(Challenges), fill=Ranking)) +
+  geom_bar(alpha=1, position="stack", color="black") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+```
+
+```{r message = FALSE}
+#| echo: false
+
+library(forcats)
+library(dplyr)
 library(ggplot2)
 
 df <- read.csv("./data/results.csv")
@@ -107,7 +207,7 @@ dat <- data.frame(
 dat <- dat[dat$Challenges != "",]
 dat <- dat[!is.na(dat$Challenges),]
 
-ggplot(dat,aes(x=Challenges, fill=Ranking)) +
+ggplot(dat,aes(x=forcats::fct_infreq(Challenges), fill=Ranking)) +
   geom_bar(alpha=1, position="stack", color="black") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
 ```

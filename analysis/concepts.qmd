@@ -27,3 +27,7 @@ Importantly, we also distinguish whether these teams are embedded in the price-s
 ## Flow of Change
 
 
+
+![Flow of Work](./diagrams/gsbpm-systems-2.drawio.svg)
+
+

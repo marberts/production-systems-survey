@@ -8,6 +8,7 @@ library(dplyr)
 library(ggplot2)
 
 df <- read.csv("./data/results.csv")
+df <- df[df[,2] != "",]
 
 df <- df |> rename(
   use_open_source_pkg=colnames(df)[118],
@@ -81,6 +82,7 @@ library(dplyr)
 library(ggplot2)
 
 df <- read.csv("./data/results.csv")
+df <- df[df[,2] != "",]
 
 df <- df |> rename(
   python=colnames(df)[151],

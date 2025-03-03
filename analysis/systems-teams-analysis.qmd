@@ -17,6 +17,7 @@ library(ggplot2)
 library(dplyr)
 
 df <- read.csv("./data/results.csv")[,10:20]
+df <- df[df[,2] != "",]
 
 df <- df |> rename(
     ingestion = "Approximately.how.many.distinct.systems.exist.for.each.step.to.make.your.CPI...Data.ingestion.",
@@ -47,6 +48,7 @@ ggplot(subset(df, same_system != "N/A"), aes(x=same_system)) + geom_bar(fill="bl
 #| fig-cap: Frequency of Steps Handled by the Same System
 
 df <- read.csv("./data/results.csv")[,15:40]
+df <- df[df[,2] != "",]
 
 df <- df |> rename(
     ingestion_1 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Data.ingestion."    ,
@@ -110,6 +112,7 @@ ggplot(dat,aes(x=Frequency, fill=Step)) + geom_histogram(alpha=0.6, position="st
 #| - Steps Handled by Contractors
 
 df <- read.csv("./data/results.csv")
+df <- df[df[,2] != "",]
 
 df <- df |> rename(
   ingestion_c_it = colnames(df)[42],
