@@ -11,6 +11,7 @@ book:
     - concepts.qmd
     - systems-teams-analysis.qmd
     - tools-and-technology.qmd
+    - challenges.qmd
     - references.qmd
 
 bibliography: references.bib

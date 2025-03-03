@@ -31,6 +31,8 @@ We also borrow a number of ideas from @forsgren2018accelerate. Particularly, mul
 
 We believe that multiple ideas presented in @dehghani2022data are highly applicable to the CPI Systems under study. Specifically, we believe that the concept of [Data-as-a-Product](https://www.thoughtworks.com/en-ca/insights/articles/leveraging-data-as-a-product-a-strategic-imperative-for-business-leaders) (and teams organized around these Data Products) provides a useful framework for thinking about how these systems and teams interact with one another. We also contrast domain-oriented decentralized teams with centralized teams.
 
+Although we do not make specific references to it in our survey, we believe the Reproducible Analytical Pipeline (RAP) work by @RAPsite does a good job at explaining how teams can introduce relevant tools and practices to workloads oriented around data processing.
+
 ## How This Report Is Organized
 
 @sec-concepts covers the key concepts used in the survey. @sec-sys-team analyzes our findings with respect to system and team organization.

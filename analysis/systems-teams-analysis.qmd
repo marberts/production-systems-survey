@@ -16,7 +16,10 @@
 library(ggplot2)
 library(dplyr)
 
-df <- read.csv("./data/results.csv")[,10:20]  |> rename(
+df <- read.csv("./data/results.csv")[,10:20]
+df <- df[df[,2] != "",]
+
+df <- df |> rename(
     ingestion = "Approximately.how.many.distinct.systems.exist.for.each.step.to.make.your.CPI...Data.ingestion.",
     processing = "Approximately.how.many.distinct.systems.exist.for.each.step.to.make.your.CPI...Data.processing.",
     elementary = "Approximately.how.many.distinct.systems.exist.for.each.step.to.make.your.CPI...Elementary.indexes.",
@@ -39,8 +42,15 @@ ggplot(subset(df, finalization != ""), aes(y=finalization)) + geom_bar(fill="#d5
 ggplot(subset(df, same_system != "N/A"), aes(x=same_system)) + geom_bar(fill="blue")
 ```
 
-```{r}
-df <- read.csv("./data/results.csv")[,15:40]  |> rename(
+```{r message=FALSE}
+#| echo: false
+#| out-width: "100%"
+#| fig-cap: Frequency of Steps Handled by the Same System
+
+df <- read.csv("./data/results.csv")[,15:40]
+df <- df[df[,2] != "",]
+
+df <- df |> rename(
     ingestion_1 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Data.ingestion."    ,
     processing_1 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Data.processing."   ,
     elementary_1 = "Indicate.which.steps.are.handled.by.the.same.system..for.up.to.five.typical.systems...System.1..Elementary.indexes.",
@@ -72,4 +82,151 @@ df$processing <- rowSums(df[,c("processing_1", "processing_2", "processing_3", "
 df$elementary <- rowSums(df[,c("elementary_1", "elementary_2", "elementary_3", "elementary_4", "elementary_5")], na.rm=TRUE)
 df$aggregation <- rowSums(df[,c("aggregation_1", "aggregation_2", "aggregation_3", "aggregation_4", "aggregation_5")], na.rm=TRUE)
 df$finalization <- rowSums(df[,c("finalization_1", "finalization_2", "finalization_3", "finalization_4", "finalization_5")], na.rm=TRUE)
+
+# Overlay all histograms on one plot
+dat <- data.frame(
+  Frequency = c(df$ingestion, df$processing, df$elementary, df$aggregation, df$finalization),
+  Step = c(
+    rep("Inegstion", each=nrow(df)),
+    rep("Processing", each=nrow(df)),
+    rep("Elementary indexes", each=nrow(df)),
+    rep("Aggregation", each=nrow(df)),
+    rep("Finalization", each=nrow(df))
+  )
+)
+
+ggplot(dat,aes(x=Frequency, fill=Step)) + geom_histogram(alpha=0.6, position="stack")
+```
+
+
+```{r message = FALSE}
+#| label: fig-steps-by-team-type
+#| layout-ncol: 2
+#| echo: false
+#| out-width: "100%"
+#| fig-cap:
+#| - Steps Handled by Central IT
+#| - Steps Handled by Domain-Embedded IT
+#| - Steps Handled by Domain-Embedded Analysts
+#| - Steps Handled by Analysts Elsewhere in the Organization
+#| - Steps Handled by Contractors
+
+df <- read.csv("./data/results.csv")
+df <- df[df[,2] != "",]
+
+df <- df |> rename(
+  ingestion_c_it = colnames(df)[42],
+  processing_c_it = colnames(df)[43],
+  elementary_c_it = colnames(df)[44],
+  agg_c_it = colnames(df)[45],
+  fin_c_it = colnames(df)[46],
+  ingestion_d_it = colnames(df)[47],
+  processing_d_it = colnames(df)[48],
+  elementary_d_it = colnames(df)[49],
+  agg_d_it = colnames(df)[50],
+  fin_d_it = colnames(df)[51],
+  ingestion_d_analyst = colnames(df)[52],
+  processing_d_analyst = colnames(df)[53],
+  elementary_d_analyst = colnames(df)[54],
+  agg_d_analyst = colnames(df)[55],
+  fin_d_analyst = colnames(df)[56],
+  ingestion_e_analyst = colnames(df)[57],
+  processing_e_analyst = colnames(df)[58],
+  elementary_e_analyst = colnames(df)[59],
+  agg_e_analyst = colnames(df)[60],
+  fin_e_analyst = colnames(df)[61],
+  ingestion_consultant = colnames(df)[62],
+  processing_consultant = colnames(df)[63],
+  elementary_consultant = colnames(df)[64],
+  agg_consultant = colnames(df)[65],
+  fin_consultant = colnames(df)[66]
+)
+
+# Corporate IT
+dat <- data.frame(
+  Frequency = c(df$ingestion_c_it, df$processing_c_it, df$elementary_c_it, df$agg_c_it, df$fin_c_it),
+  Step = c(
+    rep("Inegstion", each=nrow(df)),
+    rep("Processing", each=nrow(df)),
+    rep("Elementary indexes", each=nrow(df)),
+    rep("Aggregation", each=nrow(df)),
+    rep("Finalization", each=nrow(df))
+  )
+)
+
+# Fill NA with zero
+dat[is.na(dat)] = 0
+
+ggplot(dat, aes(x=Step, y=Frequency)) + geom_bar(stat="identity", fill="#dae8fc")
+
+# Domain embedded IT
+
+dat <- data.frame(
+  Frequency = c(df$ingestion_d_it, df$processing_d_it, df$elementary_d_it, df$agg_d_it, df$fin_d_it),
+  Step = c(
+    rep("Inegstion", each=nrow(df)),
+    rep("Processing", each=nrow(df)),
+    rep("Elementary indexes", each=nrow(df)),
+    rep("Aggregation", each=nrow(df)),
+    rep("Finalization", each=nrow(df))
+  )
+)
+
+# Fill NA with zero
+dat[is.na(dat)] = 0
+
+ggplot(dat, aes(x=Step, y=Frequency)) + geom_bar(stat="identity", fill="#fff2cc")
+
+
+# Domain embedded analysts
+
+dat <- data.frame(
+  Frequency = c(df$ingestion_d_analyst, df$processing_d_analyst, df$elementary_d_analyst, df$agg_d_analyst, df$fin_d_analyst),
+  Step = c(
+    rep("Inegstion", each=nrow(df)),
+    rep("Processing", each=nrow(df)),
+    rep("Elementary indexes", each=nrow(df)),
+    rep("Aggregation", each=nrow(df)),
+    rep("Finalization", each=nrow(df))
+  )
+)
+
+# Fill NA with zero
+dat[is.na(dat)] = 0
+
+ggplot(dat, aes(x=Step, y=Frequency)) + geom_bar(stat="identity", fill="#fff2cc")
+
+# Elsewhere Analysts
+dat <- data.frame(
+  Frequency = c(df$ingestion_e_analyst, df$processing_e_analyst, df$elementary_e_analyst, df$agg_e_analyst, df$fin_e_analyst),
+  Step = c(
+    rep("Inegstion", each=nrow(df)),
+    rep("Processing", each=nrow(df)),
+    rep("Elementary indexes", each=nrow(df)),
+    rep("Aggregation", each=nrow(df)),
+    rep("Finalization", each=nrow(df))
+  )
+)
+
+# Fill NA with zero
+dat[is.na(dat)] = 0
+
+ggplot(dat, aes(x=Step, y=Frequency)) + geom_bar(stat="identity", fill="#dae8fc")
+
+# Consultants
+dat <- data.frame(
+  Frequency = c(df$ingestion_consultant, df$processing_consultant, df$elementary_consultant, df$agg_consultant, df$fin_consultant),
+  Step = c(
+    rep("Inegstion", each=nrow(df)),
+    rep("Processing", each=nrow(df)),
+    rep("Elementary indexes", each=nrow(df)),
+    rep("Aggregation", each=nrow(df)),
+    rep("Finalization", each=nrow(df))
+  )
+)
+
+# Fill NA with zero
+dat[is.na(dat)] = 0
+
+ggplot(dat, aes(x=Step, y=Frequency)) + geom_bar(stat="identity")
 ```
